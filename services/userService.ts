@@ -1,23 +1,29 @@
+interface UserName {
+  firstname: string;
+  lastname: string;
+}
+
+interface UserGeolocation {
+  lat: string;
+  long: string;
+}
+
+interface UserAddress {
+  geolocation: UserGeolocation;
+  city: string;
+  street: string;
+  number: number;
+  zipcode: string;
+}
+
 export interface User {
   id: number;
   email: string;
   username: string;
   password: string;
-  name: {
-    firstname: string;
-    lastname: string;
-  };
+  name: UserName;
   phone: string;
-  address: {
-    geolocation: {
-      lat: string;
-      long: string;
-    };
-    city: string;
-    street: string;
-    number: number;
-    zipcode: string;
-  };
+  address: UserAddress;
   __v: number;
 }
 
