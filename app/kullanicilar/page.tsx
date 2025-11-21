@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import DataGrid, { Column } from "devextreme-react/data-grid";
 import LoadPanel from "devextreme-react/load-panel";
+import Button from "devextreme-react/button";
 import { getUsers, User } from "@/services/userService";
 import "devextreme/dist/css/dx.light.css";
 import { useRouter } from "next/navigation";
@@ -50,6 +51,42 @@ export default function UsersPage() {
           caption="Adres"
           cellRender={(data: any) => {
             return `${data.data.address.street}, ${data.data.address.city}`;
+          }}
+        />
+        <Column
+          caption="İşlemler"
+          width={200}
+          alignment="center"
+          cellRender={(data: any) => {
+            const userId = data.data.id;
+            return (
+              <div style={{ display: "flex", gap: "8px", justifyContent: "center" }}>
+                <Button
+                  icon="edit"
+                  hint="Düzenle"
+                  onClick={(e) => {
+                    e.event?.stopPropagation();
+                    router.push(ROUTES.USER_DETAIL(userId));
+                  }}
+                />
+                <Button
+                  icon="trash"
+                  hint="Sil"
+                  onClick={(e) => {
+                    e.event?.stopPropagation();
+                    // Şimdilik işlevsiz
+                  }}
+                />
+                <Button
+                  icon="export"
+                  hint="Yeni Sekmede Aç"
+                  onClick={(e) => {
+                    e.event?.stopPropagation();
+                    window.open(ROUTES.USER_DETAIL(userId), "_blank");
+                  }}
+                />
+              </div>
+            );
           }}
         />
       </DataGrid>
