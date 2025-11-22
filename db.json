@@ -265,9 +265,8 @@
   ],
   "orders": [
     {
-      "id": "102",
       "userId": "24",
-      "orderNumber": "ORD-2024-0002",
+      "orderNumber": "ORD-2024-50000",
       "status": "pending",
       "createdAt": "2025-11-02T14:50:00Z",
       "items": [
@@ -280,25 +279,8 @@
           "total": "29.7"
         }
       ],
-      "totalPrice": "29.7"
-    },
-    {
-      "id": "103",
-      "userId": "25",
-      "orderNumber": "ORD-2024-0003",
-      "status": "completed",
-      "createdAt": "2025-11-03T09:00:00Z",
-      "items": [
-        {
-          "id": "1",
-          "productId": "31",
-          "name": "Bluetooth Hoparlör",
-          "price": "349",
-          "quantity": "1",
-          "total": "349"
-        }
-      ],
-      "totalPrice": "349"
+      "totalPrice": "29.7",
+      "id": "102"
     },
     {
       "id": "104",
@@ -627,32 +609,6 @@
         }
       ],
       "totalPrice": "799.99"
-    },
-    {
-      "id": "120",
-      "userId": "25",
-      "orderNumber": "ORD-2024-0020",
-      "status": "completed",
-      "createdAt": "2025-11-20T15:50:00Z",
-      "items": [
-        {
-          "id": "1",
-          "productId": "43",
-          "name": "Taramalı Cihaz",
-          "price": "349.99",
-          "quantity": "1",
-          "total": "349.99"
-        },
-        {
-          "id": "2",
-          "productId": "44",
-          "name": "Fotokopi Kağıdı",
-          "price": "29.99",
-          "quantity": "5",
-          "total": "149.95"
-        }
-      ],
-      "totalPrice": "499.94"
     },
     {
       "id": "121",

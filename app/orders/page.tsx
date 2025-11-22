@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import DataGrid, { Column, Paging, Pager } from "devextreme-react/data-grid";
+import { useEffect, useState, useRef } from "react";
+import DataGrid, { Column, Paging, Pager, Editing } from "devextreme-react/data-grid";
 import LoadPanel from "devextreme-react/load-panel";
 import Button from "devextreme-react/button";
 import DateBox from "devextreme-react/date-box";
 import SelectBox from "devextreme-react/select-box";
-import { getOrders, Order, deleteOrder, OrderStatusLabels, OrderStatus } from "@/services/orderService";
+import { getOrders, Order, deleteOrder, updateOrder, OrderStatusLabels, OrderStatus } from "@/services/orderService";
 import { getUsers, User } from "@/services/userService";
 import "devextreme/dist/css/dx.light.css";
 import { useRouter } from "next/navigation";
@@ -24,6 +24,7 @@ export default function OrdersPage() {
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<OrderStatus | null>(null);
   const router = useRouter();
+  const dataGridRef = useRef<any>(null);
 
   const fetchOrders = async () => {
     try {
@@ -219,6 +220,26 @@ export default function OrdersPage() {
         columnAutoWidth={true}
         rowAlternationEnabled={true}
         noDataText="Siparişler bulunamadı"
+        onInitialized={(e) => {
+          dataGridRef.current = e.component;
+        }}
+        onRowUpdating={async (e) => {
+          try {
+            const updatedOrder = await updateOrder(e.oldData.id, {
+              userId: e.oldData.userId,
+              orderNumber: e.newData.orderNumber || e.oldData.orderNumber,
+              status: e.oldData.status,
+              createdAt: e.oldData.createdAt,
+              items: e.oldData.items,
+              totalPrice: e.oldData.totalPrice,
+            });
+            e.newData = updatedOrder;
+            await fetchOrders();
+          } catch (error) {
+            e.cancel = true;
+            setError(error instanceof Error ? error.message : String(error));
+          }
+        }}
         onRowClick={(e) => {
           router.push(ROUTES.ORDER_DETAIL(e.data.id));
         }}
@@ -227,7 +248,9 @@ export default function OrdersPage() {
             e.rowElement.style.cursor = "pointer";
           }
         }}
+        ref={dataGridRef}
       >
+        <Editing mode="row" allowUpdating={true} useIcons={true} />
         <Paging defaultPageSize={10} />
         <Pager
           visible={true}
@@ -236,7 +259,7 @@ export default function OrdersPage() {
           showInfo={true}
           showNavigationButtons={true}
         />
-        <Column dataField="orderNumber" caption="Sipariş No" />
+        <Column dataField="orderNumber" caption="Sipariş No" allowEditing={true} />
         <Column
           dataField="userId"
           caption="Kullanıcı"
@@ -275,14 +298,6 @@ export default function OrdersPage() {
             const orderId = data.data.id;
             return (
               <div style={{ display: "flex", gap: "8px", justifyContent: "center" }}>
-                <Button
-                  icon="edit"
-                  hint="Düzenle"
-                  onClick={(e) => {
-                    e.event?.stopPropagation();
-                    router.push(ROUTES.ORDER_DETAIL(orderId));
-                  }}
-                />
                 <Button
                   icon="trash"
                   hint="Sil"
