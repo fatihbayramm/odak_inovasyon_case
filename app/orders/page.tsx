@@ -5,7 +5,9 @@ import DataGrid, { Column, Paging, Pager } from "devextreme-react/data-grid";
 import LoadPanel from "devextreme-react/load-panel";
 import Button from "devextreme-react/button";
 import DateBox from "devextreme-react/date-box";
-import { getOrders, Order, deleteOrder, OrderStatusLabels } from "@/services/orderService";
+import SelectBox from "devextreme-react/select-box";
+import { getOrders, Order, deleteOrder, OrderStatusLabels, OrderStatus } from "@/services/orderService";
+import { getUsers, User } from "@/services/userService";
 import "devextreme/dist/css/dx.light.css";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/utils/routes";
@@ -14,10 +16,13 @@ import ErrorBox from "@/components/ErrorBox";
 export default function OrdersPage() {
   const [allOrders, setAllOrders] = useState<Order[]>([]);
   const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<OrderStatus | null>(null);
   const router = useRouter();
 
   const fetchOrders = async () => {
@@ -33,8 +38,18 @@ export default function OrdersPage() {
     }
   };
 
+  const fetchUsers = async () => {
+    try {
+      const userData = await getUsers();
+      setUsers(userData);
+    } catch (error) {
+      console.error("Failed to fetch users:", error);
+    }
+  };
+
   useEffect(() => {
     fetchOrders();
+    fetchUsers();
   }, []);
 
   useEffect(() => {
@@ -59,8 +74,16 @@ export default function OrdersPage() {
       });
     }
 
+    if (selectedUserId) {
+      filtered = filtered.filter((order) => order.userId === selectedUserId);
+    }
+
+    if (selectedStatus) {
+      filtered = filtered.filter((order) => order.status === selectedStatus);
+    }
+
     setFilteredOrders(filtered);
-  }, [allOrders, startDate, endDate]);
+  }, [allOrders, startDate, endDate, selectedUserId, selectedStatus]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -86,7 +109,21 @@ export default function OrdersPage() {
   const handleClearFilters = () => {
     setStartDate(null);
     setEndDate(null);
+    setSelectedUserId(null);
+    setSelectedStatus(null);
   };
+
+  const userOptions = users.map((user) => ({
+    value: user.id,
+    label: `${user.first_name} ${user.last_name}`,
+  }));
+
+  const statusOptions = [
+    { value: null, label: "Tümü" },
+    { value: OrderStatus.COMPLETED, label: OrderStatusLabels[OrderStatus.COMPLETED] },
+    { value: OrderStatus.PENDING, label: OrderStatusLabels[OrderStatus.PENDING] },
+    { value: OrderStatus.CANCELLED, label: OrderStatusLabels[OrderStatus.CANCELLED] },
+  ];
 
   return (
     <div style={{ padding: "20px" }}>
@@ -127,6 +164,35 @@ export default function OrdersPage() {
               placeholder="Bitiş tarihi seçiniz"
               displayFormat="dd/MM/yyyy"
               type="date"
+              width="100%"
+            />
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: "block", marginBottom: "8px", fontWeight: "500", fontSize: "14px" }}>
+              Kullanıcı
+            </label>
+            <SelectBox
+              dataSource={userOptions}
+              value={selectedUserId}
+              onValueChanged={(e) => setSelectedUserId(e.value || null)}
+              displayExpr="label"
+              valueExpr="value"
+              placeholder="Kullanıcı seçiniz"
+              searchEnabled={true}
+              showClearButton={true}
+              width="100%"
+            />
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: "block", marginBottom: "8px", fontWeight: "500", fontSize: "14px" }}>Durum</label>
+            <SelectBox
+              dataSource={statusOptions}
+              value={selectedStatus}
+              onValueChanged={(e) => setSelectedStatus(e.value || null)}
+              displayExpr="label"
+              valueExpr="value"
+              placeholder="Durum seçiniz"
+              showClearButton={true}
               width="100%"
             />
           </div>
@@ -171,7 +237,15 @@ export default function OrdersPage() {
           showNavigationButtons={true}
         />
         <Column dataField="orderNumber" caption="Sipariş No" />
-        <Column dataField="userId" caption="Kullanıcı ID" />
+        <Column
+          dataField="userId"
+          caption="Kullanıcı"
+          cellRender={(data: any) => {
+            const userId = data.data.userId;
+            const user = users.find((u) => u.id === userId);
+            return user ? `${user.first_name} ${user.last_name}` : userId;
+          }}
+        />
         <Column
           dataField="status"
           caption="Durum"

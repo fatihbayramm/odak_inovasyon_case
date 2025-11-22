@@ -7,7 +7,7 @@ export interface OrderItem {
   total: string;
 }
 
-enum OrderStatus {
+export enum OrderStatus {
   COMPLETED = "completed",
   PENDING = "pending",
   CANCELLED = "cancelled",
