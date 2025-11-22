@@ -1,10 +1,10 @@
 export const ROUTES = {
   HOME: "/",
 
-  USERS: "/kullanicilar",
-  USER_DETAIL: (id: string) => `/kullanicilar/${id}`,
-  USER_NEW: () => `/kullanicilar/yeni`,
+  USERS: "/users",
+  USER_DETAIL: (id: string) => `/users/${id}`,
+  USER_NEW: () => `/users/new`,
 
-  ORDERS: "/siparisler",
-  ORDER_DETAIL: (id: string) => `/siparisler/${id}`,
+  ORDERS: "/orders",
+  ORDER_DETAIL: (id: string) => `/orders/${id}`,
 } as const;

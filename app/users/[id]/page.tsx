@@ -41,7 +41,7 @@ export default function UserDetailPage() {
   });
 
   const fetchUser = async () => {
-    if (id === "yeni") return;
+    if (id === "new") return;
     try {
       setLoading(true);
       setError(null);
@@ -99,7 +99,7 @@ export default function UserDetailPage() {
     try {
       setLoading(true);
       setError(null);
-      if (id !== "yeni") {
+      if (id !== "new") {
         const response = await updateUser(Number(id), formData);
         setUser(response);
         setFormData({
@@ -114,7 +114,7 @@ export default function UserDetailPage() {
         });
       }
 
-      if (id === "yeni") {
+      if (id === "new") {
         const uniqueId = await generateUniqueId();
         const userWithId = { ...formData, id: String(uniqueId) };
         const response = await createUser(userWithId);
@@ -128,7 +128,7 @@ export default function UserDetailPage() {
     }
   };
 
-  if (id !== "yeni" && !user) {
+  if (id !== "new" && !user) {
     return (
       <div style={{ padding: "20px" }}>
         <LoadPanel visible={loading} message="Yükleniyor..." />
@@ -144,9 +144,14 @@ export default function UserDetailPage() {
       {error && <ErrorBox error={error} />}
 
       <div style={{ marginBottom: "30px" }}>
-        <Button text="Geri Dön" icon="back" onClick={() => router.back()} style={{ marginBottom: "20px" }} />
+        <Button
+          text="Geri Dön"
+          icon="back"
+          onClick={() => router.push(ROUTES.USERS)}
+          style={{ marginBottom: "20px" }}
+        />
         <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "30px" }}>
-          {id === "yeni" ? "Yeni Kullanıcı Oluştur" : "Kullanıcı Detayları"}
+          {id === "new" ? "Yeni Kullanıcı Oluştur" : "Kullanıcı Detayları"}
         </h1>
       </div>
 
@@ -263,7 +268,7 @@ export default function UserDetailPage() {
                     style={{ marginTop: "10px" }}
                   />
                   <Button
-                    text={id === "yeni" ? "Oluştur" : "Güncelle"}
+                    text={id === "new" ? "Oluştur" : "Güncelle"}
                     type="default"
                     useSubmitBehavior={true}
                     disabled={loading}

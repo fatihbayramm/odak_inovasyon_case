@@ -44,17 +44,6 @@
       "status": "passive"
     },
     {
-      "id": "8",
-      "first_name": "Ahmet",
-      "last_name": "Kaya",
-      "username": "ahmetkaya",
-      "password": "123462",
-      "email": "ahmet@example.com",
-      "phone": "+90 555 888 99 00",
-      "location": "Gaziantep, Türkiye",
-      "status": "active"
-    },
-    {
       "id": "10",
       "first_name": "Burak",
       "last_name": "Yıldız",
@@ -64,12 +53,6 @@
       "phone": "+90 555 000 11 22",
       "location": "Kayseri, Türkiye",
       "status": "active"
-    },
-    {
-      "id": "11",
-      "username": "denizaydin",
-      "email": "deniz@example.com",
-      "password": "123465"
     },
     {
       "id": "12",
