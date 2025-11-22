@@ -12,6 +12,8 @@ export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  //TODO: burayi normaldeki gibi duzgun bir fonksiyon haline getir.
   useEffect(() => {
     getUsers()
       .then((data) => {
