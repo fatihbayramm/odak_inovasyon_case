@@ -1,29 +1,17 @@
 {
   "users": [
     {
-      "id": 1,
-      "first_name": "Fatih",
-      "last_name": "Bayram",
+      "id": "1",
       "username": "fatihbayramybs",
-      "password": "123456",
       "email": "fatihbayramybs@gmail.com",
-      "phone": "+90 555 111 22 33",
-      "location": "Balıkesir, Türkiye",
-      "status": "active"
+      "password": "1234567",
+      "first_name": "Fatih",
+      "location": "Balikesir",
+      "phone": "+90 551 890 1897",
+      "last_name": "Bayram"
     },
     {
-      "id": 2,
-      "first_name": "Ali",
-      "last_name": "Yılmaz",
-      "username": "aliyilmaz",
-      "password": "123457",
-      "email": "ali@example.com",
-      "phone": "+90 555 222 33 44",
-      "location": "İstanbul, Türkiye",
-      "status": "active"
-    },
-    {
-      "id": 3,
+      "id": "3",
       "first_name": "Zeynep",
       "last_name": "Kara",
       "username": "zeynepkara",
@@ -34,29 +22,7 @@
       "status": "passive"
     },
     {
-      "id": 4,
-      "first_name": "Mehmet",
-      "last_name": "Demir",
-      "username": "mehmetdemir",
-      "password": "123458",
-      "email": "mehmet@example.com",
-      "phone": "+90 555 444 55 66",
-      "location": "İzmir, Türkiye",
-      "status": "active"
-    },
-    {
-      "id": 5,
-      "first_name": "Ayşe",
-      "last_name": "Şahin",
-      "username": "aysesahin",
-      "password": "123459",
-      "email": "ayse@example.com",
-      "phone": "+90 555 555 66 77",
-      "location": "Bursa, Türkiye",
-      "status": "active"
-    },
-    {
-      "id": 6,
+      "id": "6",
       "first_name": "Mustafa",
       "last_name": "Öztürk",
       "username": "mustafaozturk",
@@ -67,7 +33,7 @@
       "status": "active"
     },
     {
-      "id": 7,
+      "id": "7",
       "first_name": "Elif",
       "last_name": "Çelik",
       "username": "elifcelik",
@@ -78,7 +44,7 @@
       "status": "passive"
     },
     {
-      "id": 8,
+      "id": "8",
       "first_name": "Ahmet",
       "last_name": "Kaya",
       "username": "ahmetkaya",
@@ -89,18 +55,7 @@
       "status": "active"
     },
     {
-      "id": 9,
-      "first_name": "Selin",
-      "last_name": "Arslan",
-      "username": "selinarslan",
-      "password": "123463",
-      "email": "selin@example.com",
-      "phone": "+90 555 999 00 11",
-      "location": "Konya, Türkiye",
-      "status": "active"
-    },
-    {
-      "id": 10,
+      "id": "10",
       "first_name": "Burak",
       "last_name": "Yıldız",
       "username": "burakyildiz",
@@ -111,7 +66,7 @@
       "status": "active"
     },
     {
-      "id": 11,
+      "id": "11",
       "first_name": "Deniz",
       "last_name": "Aydın",
       "username": "denizaydin",
@@ -122,7 +77,7 @@
       "status": "passive"
     },
     {
-      "id": 12,
+      "id": "12",
       "first_name": "Can",
       "last_name": "Doğan",
       "username": "candogan",
@@ -133,7 +88,7 @@
       "status": "active"
     },
     {
-      "id": 13,
+      "id": "13",
       "first_name": "Ceren",
       "last_name": "Koç",
       "username": "cerenkoc",
@@ -144,7 +99,7 @@
       "status": "active"
     },
     {
-      "id": 14,
+      "id": "14",
       "first_name": "Emre",
       "last_name": "Şimşek",
       "username": "emresimsek",
@@ -155,7 +110,7 @@
       "status": "active"
     },
     {
-      "id": 15,
+      "id": "15",
       "first_name": "Gizem",
       "last_name": "Polat",
       "username": "gizempolat",
@@ -166,7 +121,7 @@
       "status": "passive"
     },
     {
-      "id": 16,
+      "id": "16",
       "first_name": "Kerem",
       "last_name": "Erdoğan",
       "username": "keremerdogan",
@@ -177,7 +132,7 @@
       "status": "active"
     },
     {
-      "id": 17,
+      "id": "17",
       "first_name": "Melis",
       "last_name": "Avcı",
       "username": "melisavci",
@@ -188,7 +143,7 @@
       "status": "active"
     },
     {
-      "id": 18,
+      "id": "18",
       "first_name": "Onur",
       "last_name": "Bulut",
       "username": "onurbulut",
@@ -199,7 +154,7 @@
       "status": "active"
     },
     {
-      "id": 19,
+      "id": "19",
       "first_name": "Pınar",
       "last_name": "Güneş",
       "username": "pinargunes",
@@ -210,7 +165,7 @@
       "status": "passive"
     },
     {
-      "id": 20,
+      "id": "20",
       "first_name": "Serkan",
       "last_name": "Yılmaz",
       "username": "serkanyilmaz",
@@ -221,7 +176,7 @@
       "status": "active"
     },
     {
-      "id": 21,
+      "id": "21",
       "first_name": "Tuğba",
       "last_name": "Özdemir",
       "username": "tugbaozdemir",
@@ -232,7 +187,7 @@
       "status": "active"
     },
     {
-      "id": 22,
+      "id": "22",
       "first_name": "Uğur",
       "last_name": "Kurt",
       "username": "ugurkurt",
@@ -243,7 +198,7 @@
       "status": "active"
     },
     {
-      "id": 23,
+      "id": "23",
       "first_name": "Yasemin",
       "last_name": "Akar",
       "username": "yaseminakar",
@@ -254,7 +209,7 @@
       "status": "passive"
     },
     {
-      "id": 24,
+      "id": "24",
       "first_name": "Volkan",
       "last_name": "Çetin",
       "username": "volkancetin",
@@ -265,7 +220,7 @@
       "status": "active"
     },
     {
-      "id": 25,
+      "id": "25",
       "first_name": "Zehra",
       "last_name": "Özkan",
       "username": "zehraozkan",
@@ -276,7 +231,7 @@
       "status": "active"
     },
     {
-      "id": 26,
+      "id": "26",
       "first_name": "Arda",
       "last_name": "Tunç",
       "username": "ardatunc",
@@ -287,7 +242,7 @@
       "status": "active"
     },
     {
-      "id": 27,
+      "id": "27",
       "first_name": "Beren",
       "last_name": "Kılıç",
       "username": "berenkilic",
@@ -298,7 +253,7 @@
       "status": "passive"
     },
     {
-      "id": 28,
+      "id": "28",
       "first_name": "Cem",
       "last_name": "Şen",
       "username": "cemsen",
@@ -309,7 +264,7 @@
       "status": "active"
     },
     {
-      "id": 29,
+      "id": "29",
       "first_name": "Derya",
       "last_name": "Uçar",
       "username": "deryaucar",
@@ -320,7 +275,7 @@
       "status": "active"
     },
     {
-      "id": 30,
+      "id": "30",
       "first_name": "Ege",
       "last_name": "Başar",
       "username": "egebasar",
@@ -331,7 +286,7 @@
       "status": "active"
     },
     {
-      "id": 31,
+      "id": "31",
       "first_name": "Fulya",
       "last_name": "Özer",
       "username": "fulyaozer",
@@ -340,34 +295,11 @@
       "phone": "+90 555 111 22 33",
       "location": "Çanakkale, Türkiye",
       "status": "passive"
-    },
-    {
-      "id": 32,
-      "first_name": "Gökhan",
-      "last_name": "Aktaş",
-      "username": "gokhanaktas",
-      "password": "123486",
-      "email": "gokhan@example.com",
-      "phone": "+90 555 222 33 44",
-      "location": "Isparta, Türkiye",
-      "status": "active"
-    },
-    {
-      "id": 33,
-      "first_name": "Hazal",
-      "last_name": "Yücel",
-      "username": "hazalyucel",
-      "password": "123487",
-      "email": "hazal@example.com",
-      "phone": "+90 555 333 44 55",
-      "location": "Afyon, Türkiye",
-      "status": "active"
     }
   ],
-
   "orders": [
     {
-      "id": 101,
+      "id": "101",
       "userId": 1,
       "orderNumber": "ORD-2024-0001",
       "totalPrice": 199.9,
@@ -375,7 +307,7 @@
       "createdAt": "2024-11-01"
     },
     {
-      "id": 102,
+      "id": "102",
       "userId": 1,
       "orderNumber": "ORD-2024-0002",
       "totalPrice": 89.9,
@@ -383,15 +315,15 @@
       "createdAt": "2024-11-02"
     },
     {
-      "id": 103,
+      "id": "103",
       "userId": 2,
       "orderNumber": "ORD-2024-0003",
-      "totalPrice": 349.0,
+      "totalPrice": 349,
       "status": "completed",
       "createdAt": "2024-11-03"
     },
     {
-      "id": 104,
+      "id": "104",
       "userId": 3,
       "orderNumber": "ORD-2024-0004",
       "totalPrice": 49.9,
