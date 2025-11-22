@@ -11,7 +11,8 @@ import { getUsers, User } from "@/services/userService";
 import "devextreme/dist/css/dx.light.css";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/utils/routes";
-import ErrorBox from "@/components/ErrorBox";
+import ErrorBox from "@/components/common/ErrorBox";
+import NewOrderModal from "@/components/orders/NewOrderModal";
 
 export default function OrdersPage() {
   const [allOrders, setAllOrders] = useState<Order[]>([]);
@@ -23,6 +24,7 @@ export default function OrdersPage() {
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<OrderStatus | null>(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const router = useRouter();
   const dataGridRef = useRef<any>(null);
 
@@ -203,12 +205,7 @@ export default function OrdersPage() {
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button
-            text="Yeni Sipariş Ekle"
-            icon="plus"
-            type="default"
-            onClick={() => router.push(ROUTES.ORDER_DETAIL("new"))}
-          />
+          <Button text="Yeni Sipariş Ekle" icon="plus" type="default" onClick={() => setIsModalVisible(true)} />
         </div>
       </div>
 
@@ -312,6 +309,8 @@ export default function OrdersPage() {
           }}
         />
       </DataGrid>
+
+      <NewOrderModal visible={isModalVisible} onClose={() => setIsModalVisible(false)} onSuccess={fetchOrders} />
     </div>
   );
 }

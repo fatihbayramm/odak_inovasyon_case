@@ -16,7 +16,7 @@ import CheckBox from "devextreme-react/check-box";
 import LoadPanel from "devextreme-react/load-panel";
 import "devextreme/dist/css/dx.light.css";
 import { ROUTES } from "@/utils/routes";
-import ErrorBox from "@/components/ErrorBox";
+import ErrorBox from "@/components/common/ErrorBox";
 
 export default function UserDetailPage() {
   const { id } = useParams<{ id: string }>();

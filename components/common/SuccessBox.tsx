@@ -10,7 +10,7 @@ export default function SuccessBox({ success }: { success: string }) {
         marginTop: "20px",
       }}
     >
-      Hata: {success}
+      {success}
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { getUsers, User, deleteUser } from "@/services/userService";
 import "devextreme/dist/css/dx.light.css";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/utils/routes";
-import ErrorBox from "@/components/ErrorBox";
+import ErrorBox from "@/components/common/ErrorBox";
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
