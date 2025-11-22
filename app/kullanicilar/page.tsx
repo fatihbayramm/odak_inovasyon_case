@@ -29,6 +29,9 @@ export default function UsersPage() {
   return (
     <div style={{ padding: "20px" }}>
       <LoadPanel visible={loading} message="Yükleniyor..." />
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "20px" }}>
+        <Button text="Yeni Kullanıcı Ekle" icon="plus" type="default" onClick={() => router.push(ROUTES.USER_NEW())} />
+      </div>
       <DataGrid
         dataSource={users}
         showBorders={true}

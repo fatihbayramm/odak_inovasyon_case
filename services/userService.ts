@@ -51,7 +51,7 @@ export async function getUser(id: number): Promise<User> {
 }
 
 export async function createUser(user: CreateOrUpdateUser): Promise<User> {
-  const response = await fetch(`https://fakestoreapi.com/users/create`, {
+  const response = await fetch(`https://fakestoreapi.com/users`, {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
