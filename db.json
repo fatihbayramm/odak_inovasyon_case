@@ -296,7 +296,8 @@
           "name": "Telefon Kılıfı",
           "price": "49.9",
           "quantity": "1",
-          "total": "49.9"
+          "total": "49.9",
+          "image": "/assets/images/telefon_kilifi.jpg"
         }
       ],
       "totalPrice": "49.9"
@@ -314,7 +315,8 @@
           "name": "Laptop Çantası",
           "price": "199.99",
           "quantity": "1",
-          "total": "199.99"
+          "total": "199.99",
+          "image": "/assets/images/laptop_cantasi.jpg"
         },
         {
           "id": "2",
@@ -322,7 +324,8 @@
           "name": "Mouse Pad",
           "price": "25.5",
           "quantity": "2",
-          "total": "51"
+          "total": "51",
+          "image": "/assets/images/mousepad.jpg"
         }
       ],
       "totalPrice": "250.99"
@@ -340,7 +343,8 @@
           "name": "Webcam",
           "price": "450",
           "quantity": "1",
-          "total": "450"
+          "total": "450",
+          "image": "/assets/images/webcam.jpg"
         }
       ],
       "totalPrice": "450"
@@ -358,7 +362,8 @@
           "name": "Kulaklık",
           "price": "299.99",
           "quantity": "1",
-          "total": "299.99"
+          "total": "299.99",
+          "image": "/assets/images/kulaklik.jpg"
         },
         {
           "id": "2",
@@ -366,7 +371,8 @@
           "name": "Mikrofon",
           "price": "150",
           "quantity": "1",
-          "total": "150"
+          "total": "150",
+          "image": "/assets/images/mikrofon.jpg"
         }
       ],
       "totalPrice": "449.99"
