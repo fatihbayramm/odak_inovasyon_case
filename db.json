@@ -265,32 +265,6 @@
   ],
   "orders": [
     {
-      "id": "101",
-      "userId": "1",
-      "orderNumber": "ORD-2024-0001",
-      "status": "completed",
-      "createdAt": "2024-11-01T10:30:00Z",
-      "items": [
-        {
-          "id": "1",
-          "productId": "11",
-          "name": "Kablosuz Fare",
-          "price": "49.9",
-          "quantity": "2",
-          "total": "99.8"
-        },
-        {
-          "id": "2",
-          "productId": "12",
-          "name": "Klavye",
-          "price": "100",
-          "quantity": "1",
-          "total": "100"
-        }
-      ],
-      "totalPrice": "199.8"
-    },
-    {
       "id": "102",
       "userId": "24",
       "orderNumber": "ORD-2024-0002",
