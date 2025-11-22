@@ -81,12 +81,10 @@ export default function UserDetailPage() {
     const maxAttempts = 1000;
 
     do {
-      // 100'den sonra rastgele sayı üret (100-999999 arası)
       newId = Math.floor(Math.random() * 999900) + 100;
       attempts++;
 
       if (attempts > maxAttempts) {
-        // Eğer çok fazla deneme yapıldıysa, en yüksek ID'den devam et
         const maxId = existingUsers.length > 0 ? Math.max(...existingUsers.map((u) => Number(u.id))) : 0;
         newId = Math.max(maxId + 1, 100);
         break;

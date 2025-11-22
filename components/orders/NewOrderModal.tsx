@@ -62,12 +62,10 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
     const maxAttempts = 1000;
 
     do {
-      // 130'dan sonra rastgele sayı üret (130-999999 arası)
       newId = Math.floor(Math.random() * 999870) + 130;
       attempts++;
 
       if (attempts > maxAttempts) {
-        // Eğer çok fazla deneme yapıldıysa, en yüksek ID'den devam et
         const maxId = existingOrders.length > 0 ? Math.max(...existingOrders.map((o) => Number(o.id))) : 0;
         newId = Math.max(maxId + 1, 130);
         break;
@@ -126,7 +124,7 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
       items.map((item) => {
         if (item.tempId === tempId) {
           const updatedItem = { ...item, [field]: value };
-          // Total'ı hesapla
+
           if (field === "price" || field === "quantity") {
             const price = parseFloat(updatedItem.price) || 0;
             const quantity = parseFloat(updatedItem.quantity) || 0;
@@ -157,7 +155,6 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
       return;
     }
 
-    // Tüm ürün alanlarının doldurulduğunu kontrol et
     for (const item of items) {
       if (!item.name || !item.price || !item.quantity) {
         setError("Lütfen tüm ürün alanlarını doldurunuz");
@@ -175,7 +172,6 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
       const totalPrice = calculateTotalPrice();
       const createdAt = new Date().toISOString();
 
-      // tempId'yi kaldır
       const orderItems: OrderItem[] = items.map(({ tempId, ...item }) => item);
 
       const newOrder = {
@@ -191,12 +187,10 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
       await createOrder(newOrder);
       setSuccess("Sipariş başarıyla oluşturuldu");
 
-      // Formu temizle
       setUserId(null);
       setStatus(OrderStatus.PENDING);
       setItems([]);
 
-      // 1 saniye sonra modal'ı kapat ve listeyi yenile
       setTimeout(() => {
         onSuccess();
         onClose();

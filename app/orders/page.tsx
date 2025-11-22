@@ -41,7 +41,6 @@ export default function OrdersPage() {
       const orderData = await getOrders();
       setAllOrders(orderData);
 
-      // Seçili sipariş varsa güncelle
       if (selectedOrder) {
         const updatedOrder = orderData.find((o) => o.id === selectedOrder.id);
         if (updatedOrder) {
@@ -126,11 +125,7 @@ export default function OrdersPage() {
     return `${parseFloat(price).toFixed(2)} ₺`;
   };
 
-  const handleFilter = () => {
-    // Filtreleme otomatik olarak useEffect ile yapılıyor
-    // Bu fonksiyon sadece buton tıklaması için
-    // useEffect zaten startDate ve endDate değiştiğinde çalışıyor
-  };
+  const handleFilter = () => {};
 
   const handleClearFilters = () => {
     setStartDate(null);
@@ -256,7 +251,7 @@ export default function OrdersPage() {
             });
             e.newData = updatedOrder;
             await fetchOrders();
-            // Seçili sipariş güncellenirse, selectedOrder'ı da güncelle
+
             if (selectedOrder?.id === updatedOrder.id) {
               setSelectedOrder(updatedOrder);
             }
@@ -364,8 +359,6 @@ export default function OrdersPage() {
             noDataText="Ürün bulunamadı"
             onRowUpdating={async (e) => {
               try {
-                // Yeni fiyat ve miktarı e.newData'dan al
-                // Eğer e.newData undefined/null ise, orderItems state'inden al
                 let newPrice =
                   e.newData.price !== undefined && e.newData.price !== null ? String(e.newData.price) : e.oldData.price;
                 let newQuantity =
@@ -373,7 +366,6 @@ export default function OrdersPage() {
                     ? String(e.newData.quantity)
                     : e.oldData.quantity;
 
-                // Eğer hala eski değerler varsa, orderItems state'inden güncel değeri al
                 if (newPrice === e.oldData.price || newQuantity === e.oldData.quantity) {
                   const currentItem = orderItems.find((item) => item.id === e.oldData.id);
                   if (currentItem) {
@@ -386,10 +378,8 @@ export default function OrdersPage() {
                   }
                 }
 
-                // Total'ı hesapla
                 const total = (parseFloat(newPrice) * parseFloat(newQuantity)).toFixed(2);
 
-                // Güncellenmiş ürünü oluştur
                 const updatedItem = {
                   ...e.oldData,
                   price: newPrice,
@@ -397,13 +387,10 @@ export default function OrdersPage() {
                   total: total,
                 };
 
-                // Tüm ürünleri güncelle
                 const updatedItems = orderItems.map((item) => (item.id === updatedItem.id ? updatedItem : item));
 
-                // Toplam fiyatı hesapla
                 const totalPrice = updatedItems.reduce((sum, item) => sum + parseFloat(item.total), 0).toFixed(2);
 
-                // Update isteği at
                 const updatedOrder = await updateOrder(selectedOrder.id, {
                   userId: selectedOrder.userId,
                   orderNumber: selectedOrder.orderNumber,
@@ -413,11 +400,9 @@ export default function OrdersPage() {
                   totalPrice: totalPrice,
                 });
 
-                // Response'dan gelen değerleri state'e set et
                 setSelectedOrder(updatedOrder);
                 setOrderItems([...updatedOrder.items]);
 
-                // DataGrid'e güncellenmiş ürünü set et
                 const updatedItemFromResponse = updatedOrder.items.find((item) => item.id === e.oldData.id);
                 if (updatedItemFromResponse) {
                   e.newData = updatedItemFromResponse;
@@ -425,7 +410,6 @@ export default function OrdersPage() {
                   e.newData = updatedItem;
                 }
 
-                // Sipariş listesini yenile
                 await fetchOrders();
               } catch (error) {
                 e.cancel = true;
@@ -453,7 +437,6 @@ export default function OrdersPage() {
                 return formatPrice(data.value);
               }}
               editCellRender={(data: any) => {
-                // Edit modunda mevcut değeri al
                 const itemId = data.data?.id;
                 const currentItem = orderItems.find((item) => item.id === itemId);
                 const currentValue = currentItem ? parseFloat(currentItem.price || "0") : parseFloat(data.value || "0");
@@ -463,9 +446,9 @@ export default function OrdersPage() {
                     value={currentValue}
                     onValueChanged={(e) => {
                       const newValue = String(e.value || 0);
-                      // DataGrid'in internal state'ini güncelle
+
                       data.setValue(newValue);
-                      // orderItems state'ini de güncelle
+
                       if (itemId) {
                         setOrderItems((prevItems) =>
                           prevItems.map((item) => (item.id === itemId ? { ...item, price: newValue } : item))
@@ -485,7 +468,6 @@ export default function OrdersPage() {
               width={100}
               allowEditing={true}
               editCellRender={(data: any) => {
-                // Edit modunda mevcut değeri al
                 const itemId = data.data?.id;
                 const currentItem = orderItems.find((item) => item.id === itemId);
                 const currentValue = currentItem ? parseInt(currentItem.quantity || "1") : parseInt(data.value || "1");
@@ -495,9 +477,9 @@ export default function OrdersPage() {
                     value={currentValue}
                     onValueChanged={(e) => {
                       const newValue = String(e.value || 1);
-                      // DataGrid'in internal state'ini güncelle
+
                       data.setValue(newValue);
-                      // orderItems state'ini de güncelle
+
                       if (itemId) {
                         setOrderItems((prevItems) =>
                           prevItems.map((item) => (item.id === itemId ? { ...item, quantity: newValue } : item))
@@ -580,8 +562,8 @@ export default function OrdersPage() {
               }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.onerror = null; // Sonsuz döngüyü önle
-                target.src = ""; // Resmi temizle
+                target.onerror = null;
+                target.src = "";
                 target.style.display = "none";
                 const parent = target.parentElement;
                 if (parent && !parent.querySelector(".error-message")) {

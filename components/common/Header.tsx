@@ -50,7 +50,6 @@ export default function Header() {
             Odak İnovasyon
           </h1>
 
-          {/* Desktop Navigation */}
           <div
             className="desktop-nav"
             style={{ display: "flex", alignItems: "center", gap: "8px", marginLeft: "16px" }}
@@ -71,21 +70,18 @@ export default function Header() {
         </div>
 
         <nav style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          {/* Desktop Çıkış Yap */}
           <div className="desktop-nav">
             <Button
               text="Çıkış Yap"
               icon="export"
               type="normal"
               onClick={() => {
-                // Şimdilik işlevsiz
                 console.log("Çıkış yapılıyor...");
               }}
               stylingMode="text"
             />
           </div>
 
-          {/* Mobile Hamburger Menu */}
           <Button
             icon="menu"
             type="normal"
@@ -96,7 +92,6 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* Mobile Menu Popup */}
       <Popup
         visible={isMenuOpen}
         onHiding={() => setIsMenuOpen(false)}
