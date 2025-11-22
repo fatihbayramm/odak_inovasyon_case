@@ -276,7 +276,8 @@
           "name": "USB Kablosu",
           "price": "9.9",
           "quantity": "3",
-          "total": "29.7"
+          "total": "29.7",
+          "image": "/assets/images/usbkablosu.jpg"
         }
       ],
       "totalPrice": "29.7",

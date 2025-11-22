@@ -5,6 +5,7 @@ export interface OrderItem {
   price: string;
   quantity: string;
   total: string;
+  image: string;
 }
 
 export enum OrderStatus {

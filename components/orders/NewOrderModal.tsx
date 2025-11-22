@@ -6,6 +6,7 @@ import Button from "devextreme-react/button";
 import SelectBox from "devextreme-react/select-box";
 import TextBox from "devextreme-react/text-box";
 import NumberBox from "devextreme-react/number-box";
+import FileUploader from "devextreme-react/file-uploader";
 import { createOrder, OrderStatus, OrderStatusLabels, OrderItem } from "@/services/orderService";
 import { getUsers, User } from "@/services/userService";
 import { getOrders } from "@/services/orderService";
@@ -110,6 +111,7 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
       price: "0",
       quantity: "1",
       total: "0",
+      image: "",
       tempId: `temp-${Date.now()}-${Math.random()}`,
     };
     setItems([...items, newItem]);
@@ -311,7 +313,9 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
                     <strong>Ürün {index + 1}</strong>
                     <Button icon="trash" hint="Sil" onClick={() => handleRemoveItem(item.tempId)} />
                   </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "8px" }}>
+                  <div
+                    style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "8px", marginBottom: "8px" }}
+                  >
                     <div>
                       <label style={{ display: "block", marginBottom: "4px", fontSize: "12px" }}>Ürün Adı</label>
                       <TextBox
@@ -342,6 +346,36 @@ export default function NewOrderModal({ visible, onClose, onSuccess }: NewOrderM
                       <label style={{ display: "block", marginBottom: "4px", fontSize: "12px" }}>Toplam</label>
                       <TextBox value={`${parseFloat(item.total).toFixed(2)} ₺`} readOnly={true} />
                     </div>
+                  </div>
+                  <div>
+                    <label style={{ display: "block", marginBottom: "4px", fontSize: "12px" }}>Ürün Görseli</label>
+                    <FileUploader
+                      accept="image/*"
+                      uploadMode="instantly"
+                      onValueChanged={(e) => {
+                        const file = e.value && e.value.length > 0 ? e.value[0] : null;
+                        if (file) {
+                          const reader = new FileReader();
+                          reader.onload = (event) => {
+                            const base64 = event.target?.result as string;
+                            handleItemChange(item.tempId, "image", base64);
+                          };
+                          reader.readAsDataURL(file);
+                        } else {
+                          handleItemChange(item.tempId, "image", "");
+                        }
+                      }}
+                      multiple={false}
+                    />
+                    {item.image && (
+                      <div style={{ marginTop: "8px" }}>
+                        <img
+                          src={item.image}
+                          alt="Ürün görseli"
+                          style={{ maxWidth: "100px", maxHeight: "100px", objectFit: "cover", borderRadius: "4px" }}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}

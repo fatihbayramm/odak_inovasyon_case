@@ -7,6 +7,7 @@ import Button from "devextreme-react/button";
 import DateBox from "devextreme-react/date-box";
 import SelectBox from "devextreme-react/select-box";
 import NumberBox from "devextreme-react/number-box";
+import Popup from "devextreme-react/popup";
 import { getOrders, Order, deleteOrder, updateOrder, OrderStatusLabels, OrderStatus } from "@/services/orderService";
 import { getUsers, User } from "@/services/userService";
 import "devextreme/dist/css/dx.light.css";
@@ -28,6 +29,8 @@ export default function OrdersPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [orderItems, setOrderItems] = useState<any[]>([]);
+  const [imageModalVisible, setImageModalVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const router = useRouter();
   const dataGridRef = useRef<any>(null);
 
@@ -517,9 +520,88 @@ export default function OrdersPage() {
                 return formatPrice(data.value);
               }}
             />
+            <Column
+              caption="İşlemler"
+              width={150}
+              alignment="center"
+              allowEditing={false}
+              cellRender={(data: any) => {
+                const item = data.data;
+                const hasImage = item.image && item.image.trim() !== "";
+                return (
+                  <div style={{ display: "flex", gap: "8px", justifyContent: "center" }}>
+                    {hasImage && (
+                      <Button
+                        icon="image"
+                        hint="Resmi Görüntüle"
+                        onClick={(e) => {
+                          e.event?.stopPropagation();
+                          setSelectedImage(item.image);
+                          setImageModalVisible(true);
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              }}
+            />
           </DataGrid>
         </div>
       )}
+
+      <Popup
+        visible={imageModalVisible}
+        onHiding={() => {
+          setImageModalVisible(false);
+          setSelectedImage(null);
+        }}
+        showTitle={true}
+        title="Ürün Görseli"
+        width={600}
+        height={600}
+        showCloseButton={true}
+      >
+        <div
+          style={{
+            padding: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px",
+          }}
+        >
+          {selectedImage ? (
+            <img
+              src={selectedImage}
+              alt="Ürün görseli"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "500px",
+                objectFit: "contain",
+                borderRadius: "4px",
+              }}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.onerror = null; // Sonsuz döngüyü önle
+                target.src = ""; // Resmi temizle
+                target.style.display = "none";
+                const parent = target.parentElement;
+                if (parent && !parent.querySelector(".error-message")) {
+                  const errorDiv = document.createElement("div");
+                  errorDiv.className = "error-message";
+                  errorDiv.textContent = "Resim yüklenemedi";
+                  errorDiv.style.color = "#999";
+                  errorDiv.style.textAlign = "center";
+                  errorDiv.style.padding = "20px";
+                  parent.appendChild(errorDiv);
+                }
+              }}
+            />
+          ) : (
+            <div style={{ color: "#999", textAlign: "center" }}>Resim bulunamadı</div>
+          )}
+        </div>
+      </Popup>
 
       <NewOrderModal visible={isModalVisible} onClose={() => setIsModalVisible(false)} onSuccess={fetchOrders} />
     </div>
