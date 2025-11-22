@@ -11,28 +11,6 @@
       "last_name": "Bayram"
     },
     {
-      "id": "3",
-      "first_name": "Zeyneppppp",
-      "last_name": "Kara",
-      "username": "zeynepkara",
-      "email": "zeynep@example.com",
-      "password": "123457",
-      "phone": "+90 555 333 44 55",
-      "location": "Ankara, Türkiye",
-      "status": "passive"
-    },
-    {
-      "id": "6",
-      "first_name": "Mustafa",
-      "last_name": "Öztürk",
-      "username": "mustafaozturk",
-      "password": "123460",
-      "email": "mustafa@example.com",
-      "phone": "+90 555 666 77 88",
-      "location": "Antalya, Türkiye",
-      "status": "active"
-    },
-    {
       "id": "7",
       "first_name": "Elif",
       "last_name": "Çelik",

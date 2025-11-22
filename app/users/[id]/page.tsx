@@ -138,146 +138,266 @@ export default function UserDetailPage() {
   }
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "#f8f9fa", padding: "24px" }}>
       <LoadPanel visible={loading} message="Yükleniyor..." />
 
-      {error && <ErrorBox error={error} />}
+      <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
+        {error && <ErrorBox error={error} />}
 
-      <div style={{ marginBottom: "30px" }}>
-        <Button
-          text="Geri Dön"
-          icon="back"
-          onClick={() => router.push(ROUTES.USERS)}
-          style={{ marginBottom: "20px" }}
-        />
-        <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "30px" }}>
-          {id === "new" ? "Yeni Kullanıcı Oluştur" : "Kullanıcı Detayları"}
-        </h1>
-      </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "24px",
+            paddingBottom: "16px",
+            borderBottom: "2px solid #e0e0e0",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <Button text="Geri Dön" icon="back" onClick={() => router.push(ROUTES.USERS)} stylingMode="outlined" />
+            <h1 style={{ fontSize: "28px", fontWeight: "600", margin: 0, color: "#333" }}>
+              {id === "new" ? "Yeni Kullanıcı Oluştur" : "Kullanıcı Detayları"}
+            </h1>
+          </div>
+        </div>
 
-      <div style={{ display: "grid", gap: "30px" }}>
-        <div style={{ backgroundColor: "#f5f5f5", padding: "20px", borderRadius: "8px" }}>
-          <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "20px" }}>Düzenlenebilir Bilgiler</h2>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit();
-            }}
-          >
-            <div style={{ display: "grid", gap: "20px" }}>
-              <div>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: "500" }}>Ad</label>
-                <TextBox
-                  value={formData.first_name}
-                  onValueChanged={(e) => setFormData({ ...formData, first_name: e.value })}
-                  placeholder="Ad giriniz"
-                  disabled={loading}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: "500" }}>Soyad</label>
-                <TextBox
-                  value={formData.last_name}
-                  onValueChanged={(e) => setFormData({ ...formData, last_name: e.value })}
-                  placeholder="Soyad giriniz"
-                  disabled={loading}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: "500" }}>Kullanıcı Adı</label>
-                <TextBox
-                  value={formData.username}
-                  onValueChanged={(e) => setFormData({ ...formData, username: e.value })}
-                  placeholder="Kullanıcı adı giriniz"
-                  disabled={loading}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: "500" }}>E-posta</label>
-                <TextBox
-                  value={formData.email}
-                  onValueChanged={(e) => setFormData({ ...formData, email: e.value })}
-                  placeholder="E-posta giriniz"
-                  disabled={loading}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: "500" }}>Telefon</label>
-                <TextBox
-                  value={formData.phone}
-                  onValueChanged={(e) => setFormData({ ...formData, phone: e.value })}
-                  placeholder="Telefon giriniz"
-                  disabled={loading}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: "500" }}>Konum</label>
-                <TextBox
-                  value={formData.location}
-                  onValueChanged={(e) => setFormData({ ...formData, location: e.value })}
-                  placeholder="Konum giriniz"
-                  disabled={loading}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", marginBottom: "8px", fontWeight: "500" }}>Şifre</label>
-                <TextBox
-                  value={formData.password}
-                  onValueChanged={(e) => setFormData({ ...formData, password: e.value })}
-                  mode={showPassword ? "text" : "password"}
-                  placeholder="Şifre giriniz"
-                  disabled={loading}
-                />
-                <div style={{ marginTop: "8px" }}>
-                  <CheckBox
-                    text="Şifreyi göster"
-                    value={showPassword}
-                    onValueChanged={(e) => setShowPassword(e.value)}
-                  />
-                </div>
-              </div>
-
-              {submitError && <ErrorBox error={submitError} />}
-
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div
+          style={{
+            backgroundColor: "#ffffff",
+            borderRadius: "12px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ padding: "32px" }}>
+            <h2
+              style={{
+                fontSize: "20px",
+                fontWeight: "600",
+                marginBottom: "24px",
+                color: "#1976d2",
+                paddingBottom: "12px",
+                borderBottom: "1px solid #e0e0e0",
+              }}
+            >
+              Kullanıcı Bilgileri
+            </h2>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+            >
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
                 <div>
-                  <Button
-                    text="Kullanıcıyı Sil"
-                    type="danger"
-                    onClick={async (e) => {
-                      e.event?.stopPropagation();
-                      await deleteUser(Number(id));
-                      router.push(ROUTES.USERS);
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      fontWeight: "500",
+                      color: "#555",
+                      fontSize: "14px",
                     }}
+                  >
+                    Ad <span style={{ color: "#d32f2f" }}>*</span>
+                  </label>
+                  <TextBox
+                    value={formData.first_name}
+                    onValueChanged={(e) => setFormData({ ...formData, first_name: e.value })}
+                    placeholder="Ad giriniz"
                     disabled={loading}
-                    style={{ marginTop: "10px" }}
+                    stylingMode="filled"
                   />
                 </div>
-                <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
-                  <Button
-                    text="İptal"
-                    type="outline"
-                    onClick={() => router.push(ROUTES.USERS)}
+
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      fontWeight: "500",
+                      color: "#555",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Soyad <span style={{ color: "#d32f2f" }}>*</span>
+                  </label>
+                  <TextBox
+                    value={formData.last_name}
+                    onValueChanged={(e) => setFormData({ ...formData, last_name: e.value })}
+                    placeholder="Soyad giriniz"
                     disabled={loading}
-                    style={{ marginTop: "10px" }}
+                    stylingMode="filled"
                   />
-                  <Button
-                    text={id === "new" ? "Oluştur" : "Güncelle"}
-                    type="default"
-                    useSubmitBehavior={true}
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      fontWeight: "500",
+                      color: "#555",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Kullanıcı Adı <span style={{ color: "#d32f2f" }}>*</span>
+                  </label>
+                  <TextBox
+                    value={formData.username}
+                    onValueChanged={(e) => setFormData({ ...formData, username: e.value })}
+                    placeholder="Kullanıcı adı giriniz"
                     disabled={loading}
-                    style={{ marginTop: "10px" }}
+                    stylingMode="filled"
                   />
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      fontWeight: "500",
+                      color: "#555",
+                      fontSize: "14px",
+                    }}
+                  >
+                    E-posta <span style={{ color: "#d32f2f" }}>*</span>
+                  </label>
+                  <TextBox
+                    value={formData.email}
+                    onValueChanged={(e) => setFormData({ ...formData, email: e.value })}
+                    placeholder="E-posta giriniz"
+                    disabled={loading}
+                    stylingMode="filled"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      fontWeight: "500",
+                      color: "#555",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Telefon
+                  </label>
+                  <TextBox
+                    value={formData.phone}
+                    onValueChanged={(e) => setFormData({ ...formData, phone: e.value })}
+                    placeholder="Telefon giriniz"
+                    disabled={loading}
+                    stylingMode="filled"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      fontWeight: "500",
+                      color: "#555",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Konum
+                  </label>
+                  <TextBox
+                    value={formData.location}
+                    onValueChanged={(e) => setFormData({ ...formData, location: e.value })}
+                    placeholder="Konum giriniz"
+                    disabled={loading}
+                    stylingMode="filled"
+                  />
+                </div>
+
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      fontWeight: "500",
+                      color: "#555",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Şifre <span style={{ color: "#d32f2f" }}>*</span>
+                  </label>
+                  <TextBox
+                    value={formData.password}
+                    onValueChanged={(e) => setFormData({ ...formData, password: e.value })}
+                    mode={showPassword ? "text" : "password"}
+                    placeholder="Şifre giriniz"
+                    disabled={loading}
+                    stylingMode="filled"
+                  />
+                  <div style={{ marginTop: "10px" }}>
+                    <CheckBox
+                      text="Şifreyi göster"
+                      value={showPassword}
+                      onValueChanged={(e) => setShowPassword(e.value)}
+                    />
+                  </div>
+                </div>
+
+                {submitError && (
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <ErrorBox error={submitError} />
+                  </div>
+                )}
+
+                <div
+                  style={{
+                    gridColumn: "1 / -1",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginTop: "32px",
+                    paddingTop: "24px",
+                    borderTop: "1px solid #e0e0e0",
+                  }}
+                >
+                  {id !== "new" && (
+                    <Button
+                      text="Kullanıcıyı Sil"
+                      type="danger"
+                      onClick={async (e) => {
+                        e.event?.stopPropagation();
+                        if (confirm("Bu kullanıcıyı silmek istediğinizden emin misiniz?")) {
+                          await deleteUser(Number(id));
+                          router.push(ROUTES.USERS);
+                        }
+                      }}
+                      disabled={loading}
+                      stylingMode="contained"
+                    />
+                  )}
+                  {id === "new" && <div />}
+                  <div style={{ display: "flex", gap: "12px", justifyContent: "flex-end" }}>
+                    <Button
+                      text="İptal"
+                      type="outline"
+                      onClick={() => router.push(ROUTES.USERS)}
+                      disabled={loading}
+                      stylingMode="outlined"
+                    />
+                    <Button
+                      text={id === "new" ? "Oluştur" : "Güncelle"}
+                      type="default"
+                      useSubmitBehavior={true}
+                      disabled={loading}
+                      stylingMode="contained"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
