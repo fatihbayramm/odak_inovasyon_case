@@ -266,35 +266,569 @@
   "orders": [
     {
       "id": "101",
-      "userId": 1,
+      "userId": "1",
       "orderNumber": "ORD-2024-0001",
-      "totalPrice": 199.9,
       "status": "completed",
-      "createdAt": "2024-11-01"
+      "createdAt": "2024-11-01T10:30:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "11",
+          "name": "Kablosuz Fare",
+          "price": "49.9",
+          "quantity": "2",
+          "total": "99.8"
+        },
+        {
+          "id": "2",
+          "productId": "12",
+          "name": "Klavye",
+          "price": "100",
+          "quantity": "1",
+          "total": "100"
+        }
+      ],
+      "totalPrice": "199.8"
     },
     {
       "id": "102",
-      "userId": 1,
+      "userId": "24",
       "orderNumber": "ORD-2024-0002",
-      "totalPrice": 89.9,
       "status": "pending",
-      "createdAt": "2024-11-02"
+      "createdAt": "2024-11-02T14:50:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "15",
+          "name": "USB Kablosu",
+          "price": "9.9",
+          "quantity": "3",
+          "total": "29.7"
+        }
+      ],
+      "totalPrice": "29.7"
     },
     {
       "id": "103",
-      "userId": 2,
+      "userId": "25",
       "orderNumber": "ORD-2024-0003",
-      "totalPrice": 349,
       "status": "completed",
-      "createdAt": "2024-11-03"
+      "createdAt": "2024-11-03T09:00:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "31",
+          "name": "Bluetooth Hoparlör",
+          "price": "349",
+          "quantity": "1",
+          "total": "349"
+        }
+      ],
+      "totalPrice": "349"
     },
     {
       "id": "104",
-      "userId": 3,
+      "userId": "26",
       "orderNumber": "ORD-2024-0004",
-      "totalPrice": 49.9,
       "status": "cancelled",
-      "createdAt": "2024-11-04"
+      "createdAt": "2024-11-04T17:22:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "21",
+          "name": "Telefon Kılıfı",
+          "price": "49.9",
+          "quantity": "1",
+          "total": "49.9"
+        }
+      ],
+      "totalPrice": "49.9"
+    },
+    {
+      "id": "105",
+      "userId": "7",
+      "orderNumber": "ORD-2024-0005",
+      "status": "completed",
+      "createdAt": "2024-11-05T08:15:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "22",
+          "name": "Laptop Çantası",
+          "price": "199.99",
+          "quantity": "1",
+          "total": "199.99"
+        },
+        {
+          "id": "2",
+          "productId": "23",
+          "name": "Mouse Pad",
+          "price": "25.5",
+          "quantity": "2",
+          "total": "51"
+        }
+      ],
+      "totalPrice": "250.99"
+    },
+    {
+      "id": "106",
+      "userId": "10",
+      "orderNumber": "ORD-2024-0006",
+      "status": "pending",
+      "createdAt": "2024-11-06T11:20:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "24",
+          "name": "Webcam",
+          "price": "450",
+          "quantity": "1",
+          "total": "450"
+        }
+      ],
+      "totalPrice": "450"
+    },
+    {
+      "id": "107",
+      "userId": "12",
+      "orderNumber": "ORD-2024-0007",
+      "status": "completed",
+      "createdAt": "2024-11-07T13:45:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "25",
+          "name": "Kulaklık",
+          "price": "299.99",
+          "quantity": "1",
+          "total": "299.99"
+        },
+        {
+          "id": "2",
+          "productId": "26",
+          "name": "Mikrofon",
+          "price": "150",
+          "quantity": "1",
+          "total": "150"
+        }
+      ],
+      "totalPrice": "449.99"
+    },
+    {
+      "id": "108",
+      "userId": "13",
+      "orderNumber": "ORD-2024-0008",
+      "status": "cancelled",
+      "createdAt": "2024-11-08T09:30:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "27",
+          "name": "Tablet Standı",
+          "price": "79.9",
+          "quantity": "1",
+          "total": "79.9"
+        }
+      ],
+      "totalPrice": "79.9"
+    },
+    {
+      "id": "109",
+      "userId": "14",
+      "orderNumber": "ORD-2024-0009",
+      "status": "completed",
+      "createdAt": "2024-11-09T15:10:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "28",
+          "name": "Güç Bankası",
+          "price": "129.99",
+          "quantity": "2",
+          "total": "259.98"
+        }
+      ],
+      "totalPrice": "259.98"
+    },
+    {
+      "id": "110",
+      "userId": "15",
+      "orderNumber": "ORD-2024-0010",
+      "status": "pending",
+      "createdAt": "2024-11-10T10:00:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "29",
+          "name": "HDMI Kablosu",
+          "price": "35",
+          "quantity": "3",
+          "total": "105"
+        },
+        {
+          "id": "2",
+          "productId": "30",
+          "name": "VGA Adaptörü",
+          "price": "45",
+          "quantity": "1",
+          "total": "45"
+        }
+      ],
+      "totalPrice": "150"
+    },
+    {
+      "id": "111",
+      "userId": "16",
+      "orderNumber": "ORD-2024-0011",
+      "status": "completed",
+      "createdAt": "2024-11-11T14:25:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "32",
+          "name": "Dizüstü Soğutucu",
+          "price": "89.99",
+          "quantity": "1",
+          "total": "89.99"
+        }
+      ],
+      "totalPrice": "89.99"
+    },
+    {
+      "id": "112",
+      "userId": "17",
+      "orderNumber": "ORD-2024-0012",
+      "status": "completed",
+      "createdAt": "2024-11-12T16:40:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "33",
+          "name": "Ekran Temizleme Seti",
+          "price": "19.99",
+          "quantity": "2",
+          "total": "39.98"
+        },
+        {
+          "id": "2",
+          "productId": "34",
+          "name": "Klavye Koruyucu",
+          "price": "12.5",
+          "quantity": "1",
+          "total": "12.5"
+        }
+      ],
+      "totalPrice": "52.48"
+    },
+    {
+      "id": "113",
+      "userId": "18",
+      "orderNumber": "ORD-2024-0013",
+      "status": "pending",
+      "createdAt": "2024-11-13T08:55:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "35",
+          "name": "USB Hub",
+          "price": "75",
+          "quantity": "1",
+          "total": "75"
+        }
+      ],
+      "totalPrice": "75"
+    },
+    {
+      "id": "114",
+      "userId": "19",
+      "orderNumber": "ORD-2024-0014",
+      "status": "cancelled",
+      "createdAt": "2024-11-14T12:15:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "36",
+          "name": "Dokunmatik Kalem",
+          "price": "199",
+          "quantity": "1",
+          "total": "199"
+        }
+      ],
+      "totalPrice": "199"
+    },
+    {
+      "id": "115",
+      "userId": "20",
+      "orderNumber": "ORD-2024-0015",
+      "status": "completed",
+      "createdAt": "2024-11-15T17:30:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "37",
+          "name": "Harici Hard Disk",
+          "price": "599.99",
+          "quantity": "1",
+          "total": "599.99"
+        }
+      ],
+      "totalPrice": "599.99"
+    },
+    {
+      "id": "116",
+      "userId": "21",
+      "orderNumber": "ORD-2024-0016",
+      "status": "completed",
+      "createdAt": "2024-11-16T09:20:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "38",
+          "name": "SSD Disk",
+          "price": "399.99",
+          "quantity": "1",
+          "total": "399.99"
+        },
+        {
+          "id": "2",
+          "productId": "39",
+          "name": "RAM Modülü",
+          "price": "250",
+          "quantity": "2",
+          "total": "500"
+        }
+      ],
+      "totalPrice": "899.99"
+    },
+    {
+      "id": "117",
+      "userId": "22",
+      "orderNumber": "ORD-2024-0017",
+      "status": "pending",
+      "createdAt": "2024-11-17T11:45:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "40",
+          "name": "Grafik Tableti",
+          "price": "899",
+          "quantity": "1",
+          "total": "899"
+        }
+      ],
+      "totalPrice": "899"
+    },
+    {
+      "id": "118",
+      "userId": "23",
+      "orderNumber": "ORD-2024-0018",
+      "status": "completed",
+      "createdAt": "2024-11-18T13:10:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "41",
+          "name": "Projeksiyon Cihazı",
+          "price": "2499.99",
+          "quantity": "1",
+          "total": "2499.99"
+        }
+      ],
+      "totalPrice": "2499.99"
+    },
+    {
+      "id": "119",
+      "userId": "24",
+      "orderNumber": "ORD-2024-0019",
+      "status": "cancelled",
+      "createdAt": "2024-11-19T10:25:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "42",
+          "name": "Yazıcı",
+          "price": "799.99",
+          "quantity": "1",
+          "total": "799.99"
+        }
+      ],
+      "totalPrice": "799.99"
+    },
+    {
+      "id": "120",
+      "userId": "25",
+      "orderNumber": "ORD-2024-0020",
+      "status": "completed",
+      "createdAt": "2024-11-20T15:50:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "43",
+          "name": "Taramalı Cihaz",
+          "price": "349.99",
+          "quantity": "1",
+          "total": "349.99"
+        },
+        {
+          "id": "2",
+          "productId": "44",
+          "name": "Fotokopi Kağıdı",
+          "price": "29.99",
+          "quantity": "5",
+          "total": "149.95"
+        }
+      ],
+      "totalPrice": "499.94"
+    },
+    {
+      "id": "121",
+      "userId": "26",
+      "orderNumber": "ORD-2024-0021",
+      "status": "pending",
+      "createdAt": "2024-11-21T08:30:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "45",
+          "name": "Kamera",
+          "price": "1299.99",
+          "quantity": "1",
+          "total": "1299.99"
+        }
+      ],
+      "totalPrice": "1299.99"
+    },
+    {
+      "id": "122",
+      "userId": "27",
+      "orderNumber": "ORD-2024-0022",
+      "status": "completed",
+      "createdAt": "2024-11-22T12:00:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "46",
+          "name": "Tripod",
+          "price": "149.99",
+          "quantity": "1",
+          "total": "149.99"
+        },
+        {
+          "id": "2",
+          "productId": "47",
+          "name": "Kamera Bataryası",
+          "price": "89.99",
+          "quantity": "2",
+          "total": "179.98"
+        }
+      ],
+      "totalPrice": "329.97"
+    },
+    {
+      "id": "123",
+      "userId": "28",
+      "orderNumber": "ORD-2024-0023",
+      "status": "completed",
+      "createdAt": "2024-11-23T14:20:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "48",
+          "name": "SD Kart",
+          "price": "79.99",
+          "quantity": "3",
+          "total": "239.97"
+        }
+      ],
+      "totalPrice": "239.97"
+    },
+    {
+      "id": "124",
+      "userId": "29",
+      "orderNumber": "ORD-2024-0024",
+      "status": "pending",
+      "createdAt": "2024-11-24T16:35:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "49",
+          "name": "Akıllı Saat",
+          "price": "599.99",
+          "quantity": "1",
+          "total": "599.99"
+        }
+      ],
+      "totalPrice": "599.99"
+    },
+    {
+      "id": "125",
+      "userId": "30",
+      "orderNumber": "ORD-2024-0025",
+      "status": "completed",
+      "createdAt": "2024-11-25T09:15:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "50",
+          "name": "Fitness Bilekliği",
+          "price": "199.99",
+          "quantity": "1",
+          "total": "199.99"
+        },
+        {
+          "id": "2",
+          "productId": "51",
+          "name": "Şarj Kablosu",
+          "price": "15.99",
+          "quantity": "2",
+          "total": "31.98"
+        }
+      ],
+      "totalPrice": "231.97"
+    },
+    {
+      "id": "126",
+      "userId": "31",
+      "orderNumber": "ORD-2024-0026",
+      "status": "cancelled",
+      "createdAt": "2024-11-26T11:40:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "52",
+          "name": "Tablet",
+          "price": "1999.99",
+          "quantity": "1",
+          "total": "1999.99"
+        }
+      ],
+      "totalPrice": "1999.99"
+    },
+    {
+      "id": "127",
+      "userId": "82237",
+      "orderNumber": "ORD-2024-0027",
+      "status": "completed",
+      "createdAt": "2024-11-27T13:55:00Z",
+      "items": [
+        {
+          "id": "1",
+          "productId": "53",
+          "name": "Tablet Kalemi",
+          "price": "149.99",
+          "quantity": "1",
+          "total": "149.99"
+        },
+        {
+          "id": "2",
+          "productId": "54",
+          "name": "Tablet Kılıfı",
+          "price": "79.99",
+          "quantity": "1",
+          "total": "79.99"
+        }
+      ],
+      "totalPrice": "229.98"
     }
   ]
 }
