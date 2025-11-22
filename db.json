@@ -779,9 +779,8 @@
       "totalPrice": "10.00"
     },
     {
-      "id": "288499",
       "userId": "1",
-      "orderNumber": "ORD-2025-3152",
+      "orderNumber": "ORD-2025-315222",
       "status": "completed",
       "createdAt": "2025-11-22T11:55:06.693Z",
       "items": [
@@ -789,12 +788,13 @@
           "id": "448432",
           "productId": "843405",
           "name": "telefon",
-          "price": "1000",
+          "price": "20",
           "quantity": "1",
-          "total": "1000.00"
+          "total": "20.00"
         }
       ],
-      "totalPrice": "1000.00"
+      "totalPrice": "20.00",
+      "id": "288499"
     },
     {
       "id": "932029",

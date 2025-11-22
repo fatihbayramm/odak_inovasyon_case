@@ -6,6 +6,7 @@ import LoadPanel from "devextreme-react/load-panel";
 import Button from "devextreme-react/button";
 import DateBox from "devextreme-react/date-box";
 import SelectBox from "devextreme-react/select-box";
+import NumberBox from "devextreme-react/number-box";
 import { getOrders, Order, deleteOrder, updateOrder, OrderStatusLabels, OrderStatus } from "@/services/orderService";
 import { getUsers, User } from "@/services/userService";
 import "devextreme/dist/css/dx.light.css";
@@ -25,6 +26,8 @@ export default function OrdersPage() {
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<OrderStatus | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+  const [orderItems, setOrderItems] = useState<any[]>([]);
   const router = useRouter();
   const dataGridRef = useRef<any>(null);
 
@@ -34,6 +37,15 @@ export default function OrdersPage() {
       setError(null);
       const orderData = await getOrders();
       setAllOrders(orderData);
+
+      // Seçili sipariş varsa güncelle
+      if (selectedOrder) {
+        const updatedOrder = orderData.find((o) => o.id === selectedOrder.id);
+        if (updatedOrder) {
+          setSelectedOrder(updatedOrder);
+          setOrderItems([...updatedOrder.items]);
+        }
+      }
     } catch (error) {
       setError(error instanceof Error ? error.message : String(error));
     } finally {
@@ -54,6 +66,14 @@ export default function OrdersPage() {
     fetchOrders();
     fetchUsers();
   }, []);
+
+  useEffect(() => {
+    if (selectedOrder) {
+      setOrderItems([...selectedOrder.items]);
+    } else {
+      setOrderItems([]);
+    }
+  }, [selectedOrder]);
 
   useEffect(() => {
     let filtered = [...allOrders];
@@ -232,6 +252,10 @@ export default function OrdersPage() {
             });
             e.newData = updatedOrder;
             await fetchOrders();
+            // Seçili sipariş güncellenirse, selectedOrder'ı da güncelle
+            if (selectedOrder?.id === updatedOrder.id) {
+              setSelectedOrder(updatedOrder);
+            }
           } catch (error) {
             e.cancel = true;
             setError(error instanceof Error ? error.message : String(error));
@@ -293,8 +317,20 @@ export default function OrdersPage() {
           alignment="center"
           cellRender={(data: any) => {
             const orderId = data.data.id;
+            const order = filteredOrders.find((o) => o.id === orderId);
             return (
               <div style={{ display: "flex", gap: "8px", justifyContent: "center" }}>
+                <Button
+                  icon="edit"
+                  hint="Düzenle"
+                  onClick={(e) => {
+                    e.event?.stopPropagation();
+                    if (order) {
+                      setSelectedOrder(order);
+                      setOrderItems([...order.items]);
+                    }
+                  }}
+                />
                 <Button
                   icon="trash"
                   hint="Sil"
@@ -302,6 +338,9 @@ export default function OrdersPage() {
                     e.event?.stopPropagation();
                     await deleteOrder(orderId);
                     await fetchOrders();
+                    if (selectedOrder?.id === orderId) {
+                      setSelectedOrder(null);
+                    }
                   }}
                 />
               </div>
@@ -309,6 +348,178 @@ export default function OrdersPage() {
           }}
         />
       </DataGrid>
+
+      {selectedOrder && (
+        <div style={{ marginTop: "30px" }}>
+          <div style={{ marginBottom: "16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h3 style={{ margin: 0 }}>Sipariş Ürünleri - {selectedOrder.orderNumber}</h3>
+            <Button icon="close" hint="Kapat" onClick={() => setSelectedOrder(null)} />
+          </div>
+          <DataGrid
+            dataSource={orderItems}
+            showBorders={true}
+            columnAutoWidth={true}
+            rowAlternationEnabled={true}
+            noDataText="Ürün bulunamadı"
+            onRowUpdating={async (e) => {
+              try {
+                // Yeni fiyat ve miktarı e.newData'dan al
+                // Eğer e.newData undefined/null ise, orderItems state'inden al
+                let newPrice =
+                  e.newData.price !== undefined && e.newData.price !== null ? String(e.newData.price) : e.oldData.price;
+                let newQuantity =
+                  e.newData.quantity !== undefined && e.newData.quantity !== null
+                    ? String(e.newData.quantity)
+                    : e.oldData.quantity;
+
+                // Eğer hala eski değerler varsa, orderItems state'inden güncel değeri al
+                if (newPrice === e.oldData.price || newQuantity === e.oldData.quantity) {
+                  const currentItem = orderItems.find((item) => item.id === e.oldData.id);
+                  if (currentItem) {
+                    if (newPrice === e.oldData.price) {
+                      newPrice = currentItem.price;
+                    }
+                    if (newQuantity === e.oldData.quantity) {
+                      newQuantity = currentItem.quantity;
+                    }
+                  }
+                }
+
+                // Total'ı hesapla
+                const total = (parseFloat(newPrice) * parseFloat(newQuantity)).toFixed(2);
+
+                // Güncellenmiş ürünü oluştur
+                const updatedItem = {
+                  ...e.oldData,
+                  price: newPrice,
+                  quantity: newQuantity,
+                  total: total,
+                };
+
+                // Tüm ürünleri güncelle
+                const updatedItems = orderItems.map((item) => (item.id === updatedItem.id ? updatedItem : item));
+
+                // Toplam fiyatı hesapla
+                const totalPrice = updatedItems.reduce((sum, item) => sum + parseFloat(item.total), 0).toFixed(2);
+
+                // Update isteği at
+                const updatedOrder = await updateOrder(selectedOrder.id, {
+                  userId: selectedOrder.userId,
+                  orderNumber: selectedOrder.orderNumber,
+                  status: selectedOrder.status,
+                  createdAt: selectedOrder.createdAt,
+                  items: updatedItems,
+                  totalPrice: totalPrice,
+                });
+
+                // Response'dan gelen değerleri state'e set et
+                setSelectedOrder(updatedOrder);
+                setOrderItems([...updatedOrder.items]);
+
+                // DataGrid'e güncellenmiş ürünü set et
+                const updatedItemFromResponse = updatedOrder.items.find((item) => item.id === e.oldData.id);
+                if (updatedItemFromResponse) {
+                  e.newData = updatedItemFromResponse;
+                } else {
+                  e.newData = updatedItem;
+                }
+
+                // Sipariş listesini yenile
+                await fetchOrders();
+              } catch (error) {
+                e.cancel = true;
+                setError(error instanceof Error ? error.message : String(error));
+              }
+            }}
+          >
+            <Editing mode="row" allowUpdating={true} useIcons={true} />
+            <Paging defaultPageSize={10} />
+            <Pager
+              visible={true}
+              allowedPageSizes={[5, 10, 20, 30, 50]}
+              showPageSizeSelector={true}
+              showInfo={true}
+              showNavigationButtons={true}
+            />
+            <Column dataField="id" caption="ID" width={80} allowEditing={false} />
+            <Column dataField="productId" caption="Ürün ID" width={100} allowEditing={false} />
+            <Column dataField="name" caption="Ürün Adı" allowEditing={false} />
+            <Column
+              dataField="price"
+              caption="Fiyat"
+              allowEditing={true}
+              cellRender={(data: any) => {
+                return formatPrice(data.value);
+              }}
+              editCellRender={(data: any) => {
+                // Edit modunda mevcut değeri al
+                const itemId = data.data?.id;
+                const currentItem = orderItems.find((item) => item.id === itemId);
+                const currentValue = currentItem ? parseFloat(currentItem.price || "0") : parseFloat(data.value || "0");
+
+                return (
+                  <NumberBox
+                    value={currentValue}
+                    onValueChanged={(e) => {
+                      const newValue = String(e.value || 0);
+                      // DataGrid'in internal state'ini güncelle
+                      data.setValue(newValue);
+                      // orderItems state'ini de güncelle
+                      if (itemId) {
+                        setOrderItems((prevItems) =>
+                          prevItems.map((item) => (item.id === itemId ? { ...item, price: newValue } : item))
+                        );
+                      }
+                    }}
+                    format="#,##0.00"
+                    min={0}
+                    width="100%"
+                  />
+                );
+              }}
+            />
+            <Column
+              dataField="quantity"
+              caption="Miktar"
+              width={100}
+              allowEditing={true}
+              editCellRender={(data: any) => {
+                // Edit modunda mevcut değeri al
+                const itemId = data.data?.id;
+                const currentItem = orderItems.find((item) => item.id === itemId);
+                const currentValue = currentItem ? parseInt(currentItem.quantity || "1") : parseInt(data.value || "1");
+
+                return (
+                  <NumberBox
+                    value={currentValue}
+                    onValueChanged={(e) => {
+                      const newValue = String(e.value || 1);
+                      // DataGrid'in internal state'ini güncelle
+                      data.setValue(newValue);
+                      // orderItems state'ini de güncelle
+                      if (itemId) {
+                        setOrderItems((prevItems) =>
+                          prevItems.map((item) => (item.id === itemId ? { ...item, quantity: newValue } : item))
+                        );
+                      }
+                    }}
+                    min={1}
+                    width="100%"
+                  />
+                );
+              }}
+            />
+            <Column
+              dataField="total"
+              caption="Toplam"
+              allowEditing={false}
+              cellRender={(data: any) => {
+                return formatPrice(data.value);
+              }}
+            />
+          </DataGrid>
+        </div>
+      )}
 
       <NewOrderModal visible={isModalVisible} onClose={() => setIsModalVisible(false)} onSuccess={fetchOrders} />
     </div>
