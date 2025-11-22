@@ -12,11 +12,11 @@
     },
     {
       "id": "3",
-      "first_name": "Zeynep",
+      "first_name": "Zeyneppppp",
       "last_name": "Kara",
       "username": "zeynepkara",
-      "password": "123457",
       "email": "zeynep@example.com",
+      "password": "123457",
       "phone": "+90 555 333 44 55",
       "location": "Ankara, Türkiye",
       "status": "passive"
@@ -67,14 +67,9 @@
     },
     {
       "id": "11",
-      "first_name": "Deniz",
-      "last_name": "Aydın",
       "username": "denizaydin",
-      "password": "123465",
       "email": "deniz@example.com",
-      "phone": "+90 555 111 22 33",
-      "location": "Mersin, Türkiye",
-      "status": "passive"
+      "password": "123465"
     },
     {
       "id": "12",
@@ -295,6 +290,16 @@
       "phone": "+90 555 111 22 33",
       "location": "Çanakkale, Türkiye",
       "status": "passive"
+    },
+    {
+      "id": "82237",
+      "first_name": "yenii",
+      "last_name": "yenii",
+      "username": "yenii",
+      "email": "yenii@gmail.com",
+      "phone": "+90 555 555 55 55 ",
+      "location": "Balikesir",
+      "password": "123456"
     }
   ],
   "orders": [

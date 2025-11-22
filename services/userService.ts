@@ -1,5 +1,5 @@
 export interface User {
-  id: number;
+  id: string;
   first_name: string;
   last_name: string;
   username: string;
@@ -11,7 +11,7 @@ export interface User {
 }
 
 export interface CreateOrUpdateUser {
-  id?: number;
+  id?: string;
   first_name?: string;
   last_name?: string;
   username: string;
