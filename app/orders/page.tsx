@@ -265,9 +265,6 @@ export default function OrdersPage() {
             setError(error instanceof Error ? error.message : String(error));
           }
         }}
-        onRowClick={(e) => {
-          router.push(ROUTES.ORDER_DETAIL(e.data.id));
-        }}
         onRowPrepared={(e) => {
           if (e.rowElement) {
             e.rowElement.style.cursor = "pointer";

@@ -104,7 +104,6 @@ export default function Header() {
         width="280px"
         height="auto"
         showCloseButton={true}
-        position={{ of: window, at: "top", my: "top", offset: { y: 64 } }}
       >
         <div style={{ padding: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
           <Button

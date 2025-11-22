@@ -2,13 +2,13 @@
   "users": [
     {
       "id": "1",
+      "first_name": "Fatih",
+      "last_name": "Bayram",
       "username": "fatihbayramybs",
       "email": "fatihbayramybs@gmail.com",
-      "password": "1234567",
-      "first_name": "Fatih",
-      "location": "Balikesir",
       "phone": "+90 551 890 1897",
-      "last_name": "Bayram"
+      "location": "Istanbul",
+      "password": "1234567"
     },
     {
       "id": "7",
@@ -56,11 +56,11 @@
     },
     {
       "id": "14",
-      "first_name": "Emre",
+      "first_name": "Emreee",
       "last_name": "Şimşek",
       "username": "emresimsek",
-      "password": "123468",
       "email": "emre@example.com",
+      "password": "123468",
       "phone": "+90 555 444 55 66",
       "location": "Samsun, Türkiye",
       "status": "active"
@@ -180,11 +180,10 @@
       "first_name": "Zehra",
       "last_name": "Özkan",
       "username": "zehraozkan",
-      "password": "123479",
       "email": "zehra@example.com",
       "phone": "+90 555 555 66 77",
       "location": "Hatay, Türkiye",
-      "status": "active"
+      "password": "123479"
     },
     {
       "id": "26",

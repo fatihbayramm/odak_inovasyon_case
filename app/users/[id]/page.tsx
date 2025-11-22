@@ -17,6 +17,7 @@ import LoadPanel from "devextreme-react/load-panel";
 import "devextreme/dist/css/dx.light.css";
 import { ROUTES } from "@/utils/routes";
 import ErrorBox from "@/components/common/ErrorBox";
+import SuccessBox from "@/components/common/SuccessBox";
 
 export default function UserDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -39,6 +40,7 @@ export default function UserDetailPage() {
     location: "",
     status: "active",
   });
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const fetchUser = async () => {
     if (id === "new") return;
@@ -114,6 +116,8 @@ export default function UserDetailPage() {
         });
       }
 
+      setSuccessMessage("Kullanıcı bilgileri başarıyla güncellendi.");
+
       if (id === "new") {
         const uniqueId = await generateUniqueId();
         const userWithId = { ...formData, id: String(uniqueId) };
@@ -127,6 +131,14 @@ export default function UserDetailPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (successMessage) {
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 5000);
+    }
+  }, [successMessage]);
 
   if (id !== "new" && !user) {
     return (
@@ -348,6 +360,12 @@ export default function UserDetailPage() {
                 {submitError && (
                   <div style={{ gridColumn: "1 / -1" }}>
                     <ErrorBox error={submitError} />
+                  </div>
+                )}
+
+                {successMessage && (
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <SuccessBox success={successMessage} />
                   </div>
                 )}
 
