@@ -6,20 +6,9 @@
       "last_name": "Bayram",
       "username": "fatihbayramybs",
       "email": "fatihbayramybs@gmail.com",
+      "password": "1234567",
       "phone": "+90 551 890 1897",
-      "location": "Istanbul",
-      "password": "1234567"
-    },
-    {
-      "id": "7",
-      "first_name": "Elif",
-      "last_name": "Çelik",
-      "username": "elifcelik",
-      "password": "123461",
-      "email": "elif@example.com",
-      "phone": "+90 555 777 88 99",
-      "location": "Adana, Türkiye",
-      "status": "passive"
+      "location": "Istanbull"
     },
     {
       "id": "10",
@@ -303,7 +292,7 @@
     },
     {
       "id": "105",
-      "userId": "7",
+      "userId": null,
       "orderNumber": "ORD-2024-0005",
       "status": "completed",
       "createdAt": "2025-11-05T08:15:00Z",
@@ -858,7 +847,7 @@
     },
     {
       "id": "895455",
-      "userId": "7",
+      "userId": null,
       "orderNumber": "ORD-2025-7682",
       "status": "cancelled",
       "createdAt": "2025-11-22T11:57:33.954Z",
