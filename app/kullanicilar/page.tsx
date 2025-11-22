@@ -47,17 +47,12 @@ export default function UsersPage() {
           }
         }}
       >
-        <Column dataField="name.firstname" caption="Ad" />
-        <Column dataField="name.lastname" caption="Soyad" />
+        <Column dataField="first_name" caption="Ad" />
+        <Column dataField="last_name" caption="Soyad" />
         <Column dataField="username" caption="Kullanıcı Adı" />
         <Column dataField="email" caption="Email" />
         <Column dataField="phone" caption="Telefon" />
-        <Column
-          caption="Adres"
-          cellRender={(data: any) => {
-            return `${data.data.address.street}, ${data.data.address.city}`;
-          }}
-        />
+        <Column dataField="location" caption="Konum" />
         <Column
           caption="İşlemler"
           width={200}

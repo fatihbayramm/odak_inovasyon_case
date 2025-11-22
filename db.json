@@ -1,0 +1,402 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Fatih",
+      "last_name": "Bayram",
+      "username": "fatihbayramybs",
+      "password": "123456",
+      "email": "fatihbayramybs@gmail.com",
+      "phone": "+90 555 111 22 33",
+      "location": "Balıkesir, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "first_name": "Ali",
+      "last_name": "Yılmaz",
+      "username": "aliyilmaz",
+      "password": "123457",
+      "email": "ali@example.com",
+      "phone": "+90 555 222 33 44",
+      "location": "İstanbul, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "first_name": "Zeynep",
+      "last_name": "Kara",
+      "username": "zeynepkara",
+      "password": "123457",
+      "email": "zeynep@example.com",
+      "phone": "+90 555 333 44 55",
+      "location": "Ankara, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 4,
+      "first_name": "Mehmet",
+      "last_name": "Demir",
+      "username": "mehmetdemir",
+      "password": "123458",
+      "email": "mehmet@example.com",
+      "phone": "+90 555 444 55 66",
+      "location": "İzmir, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "first_name": "Ayşe",
+      "last_name": "Şahin",
+      "username": "aysesahin",
+      "password": "123459",
+      "email": "ayse@example.com",
+      "phone": "+90 555 555 66 77",
+      "location": "Bursa, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "first_name": "Mustafa",
+      "last_name": "Öztürk",
+      "username": "mustafaozturk",
+      "password": "123460",
+      "email": "mustafa@example.com",
+      "phone": "+90 555 666 77 88",
+      "location": "Antalya, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 7,
+      "first_name": "Elif",
+      "last_name": "Çelik",
+      "username": "elifcelik",
+      "password": "123461",
+      "email": "elif@example.com",
+      "phone": "+90 555 777 88 99",
+      "location": "Adana, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 8,
+      "first_name": "Ahmet",
+      "last_name": "Kaya",
+      "username": "ahmetkaya",
+      "password": "123462",
+      "email": "ahmet@example.com",
+      "phone": "+90 555 888 99 00",
+      "location": "Gaziantep, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 9,
+      "first_name": "Selin",
+      "last_name": "Arslan",
+      "username": "selinarslan",
+      "password": "123463",
+      "email": "selin@example.com",
+      "phone": "+90 555 999 00 11",
+      "location": "Konya, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 10,
+      "first_name": "Burak",
+      "last_name": "Yıldız",
+      "username": "burakyildiz",
+      "password": "123464",
+      "email": "burak@example.com",
+      "phone": "+90 555 000 11 22",
+      "location": "Kayseri, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 11,
+      "first_name": "Deniz",
+      "last_name": "Aydın",
+      "username": "denizaydin",
+      "password": "123465",
+      "email": "deniz@example.com",
+      "phone": "+90 555 111 22 33",
+      "location": "Mersin, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 12,
+      "first_name": "Can",
+      "last_name": "Doğan",
+      "username": "candogan",
+      "password": "123466",
+      "email": "can@example.com",
+      "phone": "+90 555 222 33 44",
+      "location": "Eskişehir, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 13,
+      "first_name": "Ceren",
+      "last_name": "Koç",
+      "username": "cerenkoc",
+      "password": "123467",
+      "email": "ceren@example.com",
+      "phone": "+90 555 333 44 55",
+      "location": "Diyarbakır, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 14,
+      "first_name": "Emre",
+      "last_name": "Şimşek",
+      "username": "emresimsek",
+      "password": "123468",
+      "email": "emre@example.com",
+      "phone": "+90 555 444 55 66",
+      "location": "Samsun, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 15,
+      "first_name": "Gizem",
+      "last_name": "Polat",
+      "username": "gizempolat",
+      "password": "123469",
+      "email": "gizem@example.com",
+      "phone": "+90 555 555 66 77",
+      "location": "Malatya, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 16,
+      "first_name": "Kerem",
+      "last_name": "Erdoğan",
+      "username": "keremerdogan",
+      "password": "123470",
+      "email": "kerem@example.com",
+      "phone": "+90 555 666 77 88",
+      "location": "Trabzon, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 17,
+      "first_name": "Melis",
+      "last_name": "Avcı",
+      "username": "melisavci",
+      "password": "123471",
+      "email": "melis@example.com",
+      "phone": "+90 555 777 88 99",
+      "location": "Erzurum, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 18,
+      "first_name": "Onur",
+      "last_name": "Bulut",
+      "username": "onurbulut",
+      "password": "123472",
+      "email": "onur@example.com",
+      "phone": "+90 555 888 99 00",
+      "location": "Van, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 19,
+      "first_name": "Pınar",
+      "last_name": "Güneş",
+      "username": "pinargunes",
+      "password": "123473",
+      "email": "pinar@example.com",
+      "phone": "+90 555 999 00 11",
+      "location": "Manisa, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 20,
+      "first_name": "Serkan",
+      "last_name": "Yılmaz",
+      "username": "serkanyilmaz",
+      "password": "123474",
+      "email": "serkan@example.com",
+      "phone": "+90 555 000 11 22",
+      "location": "Muğla, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 21,
+      "first_name": "Tuğba",
+      "last_name": "Özdemir",
+      "username": "tugbaozdemir",
+      "password": "123475",
+      "email": "tugba@example.com",
+      "phone": "+90 555 111 22 33",
+      "location": "Aydın, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 22,
+      "first_name": "Uğur",
+      "last_name": "Kurt",
+      "username": "ugurkurt",
+      "password": "123476",
+      "email": "ugur@example.com",
+      "phone": "+90 555 222 33 44",
+      "location": "Tekirdağ, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 23,
+      "first_name": "Yasemin",
+      "last_name": "Akar",
+      "username": "yaseminakar",
+      "password": "123477",
+      "email": "yasemin@example.com",
+      "phone": "+90 555 333 44 55",
+      "location": "Sakarya, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 24,
+      "first_name": "Volkan",
+      "last_name": "Çetin",
+      "username": "volkancetin",
+      "password": "123478",
+      "email": "volkan@example.com",
+      "phone": "+90 555 444 55 66",
+      "location": "Denizli, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 25,
+      "first_name": "Zehra",
+      "last_name": "Özkan",
+      "username": "zehraozkan",
+      "password": "123479",
+      "email": "zehra@example.com",
+      "phone": "+90 555 555 66 77",
+      "location": "Hatay, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 26,
+      "first_name": "Arda",
+      "last_name": "Tunç",
+      "username": "ardatunc",
+      "password": "123480",
+      "email": "arda@example.com",
+      "phone": "+90 555 666 77 88",
+      "location": "Giresun, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 27,
+      "first_name": "Beren",
+      "last_name": "Kılıç",
+      "username": "berenkilic",
+      "password": "123481",
+      "email": "beren@example.com",
+      "phone": "+90 555 777 88 99",
+      "location": "Ordu, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 28,
+      "first_name": "Cem",
+      "last_name": "Şen",
+      "username": "cemsen",
+      "password": "123482",
+      "email": "cem@example.com",
+      "phone": "+90 555 888 99 00",
+      "location": "Rize, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 29,
+      "first_name": "Derya",
+      "last_name": "Uçar",
+      "username": "deryaucar",
+      "password": "123483",
+      "email": "derya@example.com",
+      "phone": "+90 555 999 00 11",
+      "location": "Zonguldak, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 30,
+      "first_name": "Ege",
+      "last_name": "Başar",
+      "username": "egebasar",
+      "password": "123484",
+      "email": "ege@example.com",
+      "phone": "+90 555 000 11 22",
+      "location": "Kastamonu, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 31,
+      "first_name": "Fulya",
+      "last_name": "Özer",
+      "username": "fulyaozer",
+      "password": "123485",
+      "email": "fulya@example.com",
+      "phone": "+90 555 111 22 33",
+      "location": "Çanakkale, Türkiye",
+      "status": "passive"
+    },
+    {
+      "id": 32,
+      "first_name": "Gökhan",
+      "last_name": "Aktaş",
+      "username": "gokhanaktas",
+      "password": "123486",
+      "email": "gokhan@example.com",
+      "phone": "+90 555 222 33 44",
+      "location": "Isparta, Türkiye",
+      "status": "active"
+    },
+    {
+      "id": 33,
+      "first_name": "Hazal",
+      "last_name": "Yücel",
+      "username": "hazalyucel",
+      "password": "123487",
+      "email": "hazal@example.com",
+      "phone": "+90 555 333 44 55",
+      "location": "Afyon, Türkiye",
+      "status": "active"
+    }
+  ],
+
+  "orders": [
+    {
+      "id": 101,
+      "userId": 1,
+      "orderNumber": "ORD-2024-0001",
+      "totalPrice": 199.9,
+      "status": "completed",
+      "createdAt": "2024-11-01"
+    },
+    {
+      "id": 102,
+      "userId": 1,
+      "orderNumber": "ORD-2024-0002",
+      "totalPrice": 89.9,
+      "status": "pending",
+      "createdAt": "2024-11-02"
+    },
+    {
+      "id": 103,
+      "userId": 2,
+      "orderNumber": "ORD-2024-0003",
+      "totalPrice": 349.0,
+      "status": "completed",
+      "createdAt": "2024-11-03"
+    },
+    {
+      "id": 104,
+      "userId": 3,
+      "orderNumber": "ORD-2024-0004",
+      "totalPrice": 49.9,
+      "status": "cancelled",
+      "createdAt": "2024-11-04"
+    }
+  ]
+}
