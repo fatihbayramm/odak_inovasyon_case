@@ -157,6 +157,7 @@ export default function OrdersPage() {
 
       <div style={{ marginBottom: "20px" }}>
         <div
+          className="filters-container"
           style={{
             display: "flex",
             gap: "16px",
@@ -222,7 +223,7 @@ export default function OrdersPage() {
               width="100%"
             />
           </div>
-          <div style={{ display: "flex", gap: "8px" }}>
+          <div className="filter-buttons" style={{ display: "flex", gap: "8px" }}>
             <Button text="Filtrele" type="default" onClick={handleFilter} />
             <Button text="Temizle" type="outline" onClick={handleClearFilters} />
           </div>
@@ -604,6 +605,26 @@ export default function OrdersPage() {
       </Popup>
 
       <NewOrderModal visible={isModalVisible} onClose={() => setIsModalVisible(false)} onSuccess={fetchOrders} />
+
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .filters-container {
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .filters-container > div {
+            flex: 1 1 100% !important;
+            width: 100% !important;
+          }
+          .filter-buttons {
+            width: 100% !important;
+            justify-content: stretch !important;
+          }
+          .filter-buttons button {
+            flex: 1 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
