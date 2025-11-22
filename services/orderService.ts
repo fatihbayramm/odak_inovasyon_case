@@ -39,8 +39,20 @@ export interface CreateOrUpdateOrder {
   totalPrice?: string;
 }
 
-export async function getOrders(): Promise<Order[]> {
-  const response = await fetch("http://localhost:4000/orders");
+export async function getOrders(filters?: { createdAt_gte?: string; createdAt_lte?: string }): Promise<Order[]> {
+  const url = new URL("http://localhost:4000/orders");
+
+  if (filters?.createdAt_gte) {
+    url.searchParams.append("createdAt_gte", filters.createdAt_gte);
+  }
+  if (filters?.createdAt_lte) {
+    url.searchParams.append("createdAt_lte", filters.createdAt_lte);
+  }
+
+  const finalUrl = url.toString();
+  console.log("Fetching orders from:", finalUrl);
+
+  const response = await fetch(finalUrl);
   if (!response.ok) {
     throw new Error("Failed to fetch orders");
   }
